@@ -13,12 +13,12 @@ class AuthController {
   static async login(req: Request, res: Response, next: NextFunction) {
     const { idToken } = req.body;
     try {
-      const authResponse = await AuthService.verifyUserToken(idToken);
-      if (authResponse.success) {
+      const tokenResponse = await AuthService.verifyUserToken(idToken);
+      if (tokenResponse) {
         // Set a session, JWT, or other auth method for logged-in user
         res
           .status(200)
-          .json({ message: "Login successful", userId: authResponse.userId });
+          .json({ message: "Login successful", userId: tokenResponse.uid });
       } else {
         throw new HttpError(401, "Unauthorized");
       }
