@@ -20,6 +20,7 @@ A RESTful API built with Express.js and Firebase for managing blog posts and use
 1. Clone the repository
 2. Install dependencies
 3. Add service account file in root directory for local development
+4. Add env variables to .env file
 
 
 ## Deployment
@@ -47,6 +48,3 @@ For secure credential management, choose one of these approaches:
 - Use environment variables with proper encryption
   - Set credentials as secure environment variables
   - Ensure variables are encrypted at rest
-
-
-Env file is not required for local development. However if you choose to use env variables for Firebase, add them to the .env file.
