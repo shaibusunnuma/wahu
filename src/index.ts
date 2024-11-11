@@ -3,6 +3,15 @@ import bodyParser from "body-parser";
 import authRouter from "./routes/auth.route";
 import { getTestToken } from "../firebaseClientTest";
 import errorMiddleware from "./middlewares/error.middleware";
+import userRouter from "./routes/user.route";
+
+declare global {
+  namespace Express {
+    interface Request {
+      userId: string;
+    }
+  }
+}
 
 
 const app = express();
@@ -16,6 +25,7 @@ app.get("/token/:uid", async (req, res) => {
   });
 
 app.use("/auth", authRouter);
+app.use("/profile", userRouter);
 app.use(errorMiddleware);
 
 

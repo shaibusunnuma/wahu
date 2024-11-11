@@ -37,6 +37,19 @@ export class FirebaseService {
       throw new Error(`Failed to verify ID token: ${error}`);
     }
   }
+
+  public async getCollection(collection: string) {
+    try {
+      const documents = this.getFirestore().collection(collection);
+      if (documents) {
+        return documents;
+      } else {
+        throw new Error(`Collection ${collection} not found`);
+      }
+    } catch (error) {
+      throw new Error(`Failed to get document: ${error}`);
+    }
+  }
 }
 
 export default FirebaseService.getInstance();
