@@ -1,5 +1,6 @@
 import * as admin from "firebase-admin";
 import serviceAccountKey from "../../serviceAccountKey.json";
+import { DecodedIdToken } from "firebase-admin/lib/auth/token-verifier";
 
 export class FirebaseService {
   private static instance: FirebaseService;
@@ -29,7 +30,7 @@ export class FirebaseService {
     return admin.auth();
   }
 
-  public async verifyIdToken(idToken: string) {
+  public async verifyIdToken(idToken: string): Promise<DecodedIdToken> {
     try {
       const decodedToken = await this.getAuth().verifyIdToken(idToken);
       return decodedToken;
@@ -38,7 +39,9 @@ export class FirebaseService {
     }
   }
 
-  public async getCollection(collection: string) {
+  public async getCollection(
+    collection: string
+  ): Promise<FirebaseFirestore.CollectionReference> {
     try {
       const documents = this.getFirestore().collection(collection);
       if (documents) {

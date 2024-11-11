@@ -4,7 +4,10 @@ import FirebaseService from "./FirebaseService";
 const COLLECTION_NAME = "users";
 
 class UserService {
-  static async createUserProfile(uid: string, dto: ProfileDto) {
+  static async createUserProfile(
+    uid: string,
+    dto: ProfileDto
+  ): Promise<FirebaseFirestore.DocumentData | undefined> {
     try {
       const userCollection = await FirebaseService.getCollection(
         COLLECTION_NAME
@@ -18,7 +21,9 @@ class UserService {
     }
   }
 
-  static async getUserProfile(uid: string) {
+  static async getUserProfile(
+    uid: string
+  ): Promise<FirebaseFirestore.DocumentData | undefined> {
     try {
       const userCollection = await FirebaseService.getCollection(
         COLLECTION_NAME
@@ -33,7 +38,10 @@ class UserService {
     }
   }
 
-  static async updateUserProfile(userId: string, user: UpdateUserDto) {
+  static async updateUserProfile(
+    userId: string,
+    user: UpdateUserDto
+  ): Promise<FirebaseFirestore.DocumentData | undefined> {
     try {
       const userCollection = await FirebaseService.getCollection(
         COLLECTION_NAME
@@ -47,7 +55,7 @@ class UserService {
     }
   }
 
-  static async deleteUserProfile(userId: string) {
+  static async deleteUserProfile(userId: string): Promise<void> {
     try {
       const userCollection = await FirebaseService.getCollection(
         COLLECTION_NAME

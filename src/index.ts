@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.get("/token/:uid", async (req, res) => {
- 
+  //TODO: Remove this route before deploying
     const token = await getTestToken();
     res.send(token);
   });
