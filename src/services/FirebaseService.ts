@@ -7,11 +7,15 @@ export class FirebaseService {
 
   private constructor() {
     if (admin.apps.length === 0) {
-      admin.initializeApp({
-        credential: admin.credential.cert(
-          serviceAccountKey as admin.ServiceAccount
-        ),
-      });
+      if (process.env.NODE_ENV === "production") {
+        admin.initializeApp();
+      } else {
+        admin.initializeApp({
+          credential: admin.credential.cert(
+            serviceAccountKey as admin.ServiceAccount
+          ),
+        });
+      }
     }
   }
 
