@@ -4,6 +4,7 @@ import authRouter from "./routes/auth.route";
 import { getTestToken } from "../firebaseClientTest";
 import errorMiddleware from "./middlewares/error.middleware";
 import userRouter from "./routes/user.route";
+import blogRouter from "./routes/blog.route";
 
 declare global {
   namespace Express {
@@ -26,6 +27,7 @@ app.get("/token/:uid", async (req, res) => {
 
 app.use("/auth", authRouter);
 app.use("/profile", userRouter);
+app.use("/posts", blogRouter);
 app.use(errorMiddleware);
 
 
