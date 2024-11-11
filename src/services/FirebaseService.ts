@@ -10,8 +10,6 @@ export class FirebaseService {
         credential: admin.credential.cert(
           serviceAccountKey as admin.ServiceAccount
         ),
-        // credential: admin.credential.applicationDefault(), // or use admin.credential.cert(serviceAccountKey) for custom cert
-        // databaseURL: process.env.FIREBASE_DATABASE_URL,
       });
     }
   }
