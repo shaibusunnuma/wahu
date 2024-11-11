@@ -46,8 +46,8 @@ class UserController {
   ) {
     try {
       const { userId } = req;
-      const user = await UserService.deleteUserProfile(userId);
-      res.status(200).json(user);
+      await UserService.deleteUserProfile(userId);
+      res.status(200).json("Your profile has been deleted successfully");
     } catch (error) {
       next(error);
     }
