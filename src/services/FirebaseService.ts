@@ -30,6 +30,15 @@ export class FirebaseService {
   public getAuth() {
     return admin.auth();
   }
+
+  public async verifyIdToken(idToken: string) {
+    try {
+      const decodedToken = await this.getAuth().verifyIdToken(idToken);
+      return decodedToken;
+    } catch (error) {
+      throw new Error(`Failed to verify ID token: ${error}`);
+    }
+  }
 }
 
 export default FirebaseService.getInstance();
