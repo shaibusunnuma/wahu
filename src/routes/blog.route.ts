@@ -6,13 +6,13 @@ const blogRouter = Router();
 
 blogRouter
   .route("")
-  .post(validateSchema(blogSchema.create), BlogController.createBlog)
-  .get(validateSchema(blogSchema.filter), BlogController.getBlogs);
+  .post(validateSchema(blogSchema.create), BlogController.createPost)
+  .get(validateSchema(blogSchema.filter), BlogController.getPosts);
 
 blogRouter
   .route("/:id")
-  .get(validateSchema(blogSchema.withId), BlogController.getBlogById)
-  .patch(validateSchema(blogSchema.update), BlogController.updateBlog)
-  .delete(validateSchema(blogSchema.withId), BlogController.deleteBlog);
+  .get(validateSchema(blogSchema.withId), BlogController.getPostById)
+  .patch(validateSchema(blogSchema.update), BlogController.updatePost)
+  .delete(validateSchema(blogSchema.withId), BlogController.deletePost);
 
 export default blogRouter;

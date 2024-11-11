@@ -1,10 +1,10 @@
 import FirebaseService from "./FirebaseService";
-import { CreateBlogDto, UpdateBlogDto } from "../dto/blog.dto";
+import { createPostDto, updatePostDto } from "../dto/blog.dto";
 const COLLECTION_NAME = "blogs";
 
 class BlogService {
-  static async createBlog(
-    blog: CreateBlogDto
+  static async createPost(
+    blog: createPostDto
   ): Promise<FirebaseFirestore.DocumentData | undefined> {
     try {
       const blogCollection = await FirebaseService.getCollection(
@@ -18,7 +18,7 @@ class BlogService {
     }
   }
 
-  static async getAll(): Promise<FirebaseFirestore.DocumentData[]> {
+  static async getPosts(): Promise<FirebaseFirestore.DocumentData[]> {
     try {
       const blogCollection = await FirebaseService.getCollection(
         COLLECTION_NAME
@@ -30,7 +30,7 @@ class BlogService {
     }
   }
 
-  static async getBlogById(
+  static async getPostById(
     blogId: string
   ): Promise<FirebaseFirestore.DocumentData | undefined> {
     try {
@@ -65,9 +65,9 @@ class BlogService {
     }
   }
 
-  static async updateBlog(
+  static async updatePost(
     blogId: string,
-    blog: UpdateBlogDto
+    blog: updatePostDto
   ): Promise<FirebaseFirestore.DocumentData | undefined> {
     try {
       const blogCollection = await FirebaseService.getCollection(
@@ -88,7 +88,7 @@ class BlogService {
     }
   }
 
-  static async deleteBlog(blogId: string): Promise<void> {
+  static async deletePost(blogId: string): Promise<void> {
     try {
       const blogCollection = await FirebaseService.getCollection(
         COLLECTION_NAME

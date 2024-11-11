@@ -1,11 +1,11 @@
-export interface CreateBlogDto {
+export interface createPostDto {
   authorId: string;
   title: string;
   content: string;
 }
 
 
-export type UpdateBlogDto = {
+export type updatePostDto = {
   title?: string;
   content?: string;
 };
