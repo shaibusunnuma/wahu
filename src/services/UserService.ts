@@ -24,6 +24,9 @@ class UserService {
         COLLECTION_NAME
       );
       const user = await userCollection.doc(uid).get();
+      if (!user.exists) {
+        throw new Error(`User with ID ${uid} not found`);
+      }
       return user.data();
     } catch (error) {
       throw new Error(`Failed to get user profile: ${error}`);
