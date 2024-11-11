@@ -1,5 +1,4 @@
 export interface createPostDto {
-  authorId: string;
   title: string;
   content: string;
 }

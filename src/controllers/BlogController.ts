@@ -5,7 +5,9 @@ import { HttpError } from "../utils/HttpErrorHandler";
 class BlogController {
   static async createPost(req: Request, res: Response, next: NextFunction) {
     try {
-      const blog = await BlogService.createPost(req.body);
+      const { userId } = req;
+      const data = { ...req.body, authorId: userId };
+      const blog = await BlogService.createPost(data);
       res.status(201).json(blog);
     } catch (error) {
       next(error);
