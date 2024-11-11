@@ -11,5 +11,4 @@ node_modules
 local
 .env
 *.pem
-
 serviceAccountKey.json
