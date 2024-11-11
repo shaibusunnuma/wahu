@@ -12,3 +12,4 @@ local
 .env
 *.pem
 serviceAccountKey.json
+firebaseClientTest.ts
