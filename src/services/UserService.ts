@@ -9,10 +9,10 @@ class UserService {
       const userCollection = await FirebaseService.getCollection(
         COLLECTION_NAME
       );
-      const userDoc = await userCollection
-        .doc(uid)
-        .set({ uid, ...dto }, { merge: true });
-      return userDoc;
+      //Can choose to either return error if user already exists or merge the data
+      await userCollection.doc(uid).set({ uid, ...dto }, { merge: true });
+      const createdUser = await userCollection.doc(uid).get();
+      return createdUser.data();
     } catch (error) {
       throw new Error(`Failed to create user profile: ${error}`);
     }
