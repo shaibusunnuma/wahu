@@ -2,7 +2,10 @@ import { Router } from "express";
 import BlogController from "../controllers/BlogController";
 import { validateSchema } from "../middlewares/validators/validateRequest";
 import { blogSchema } from "../middlewares/validators/blogSchema";
+import authMiddleware from "../middlewares/auth.middleware";
+
 const blogRouter = Router();
+blogRouter.use(authMiddleware);
 
 blogRouter
   .route("")
